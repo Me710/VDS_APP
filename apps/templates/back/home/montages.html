@@ -1,0 +1,193 @@
+{% extends 'back/layouts/base.html' %}
+
+{% block title %} Tables {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+      
+  {% include "back/includes/sidenav.html" %}
+
+  <main class="main-content position-relative border-radius-lg ">
+    {% include "back/includes/navigation.html" %}
+
+    <div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card bg-transparent shadow-xl">
+        <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+          <span class="mask bg-gradient-dark"></span>
+          <div class="card-body position-relative z-index-1 p-3">
+            <i class="fas fa-calendar-alt text-white p-2"></i>
+            <h5 class="text-white mt-4 mb-5 pb-2">Gestion des Montages</h5>
+            <div class="d-flex">
+              <div class="me-4">
+                <p class="text-white text-sm opacity-8 mb-0">Administrateur</p>
+                <h6 class="text-white mb-0">Jean Dupont</h6>
+              </div>
+              <div>
+                <p class="text-white text-sm opacity-8 mb-0">Date</p>
+                <h6 class="text-white mb-0">03/08/2024</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <h6 class="mb-0">Montages VDS</h6>
+            </div>
+            <div class="col-6 text-end">
+              <a class="btn bg-gradient-dark mb-0" href="javascript:;" id="addEventButton"><i class="fas fa-plus"></i>&nbsp;&nbsp;Ajouter un Montage</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <div class="row" id="eventList">
+            <!-- Template for an Event -->
+            <div class="col-md-12 mb-md-0 mb-4 event-item" style="display: none;">
+              <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                <i class="fas fa-calendar-alt me-3 text-primary"></i>
+                <h6 class="mb-0 event-name">Nom du  Montage</h6>
+                <div class="ms-auto d-flex">
+                  <i class="fas fa-pencil-alt me-3 text-dark cursor-pointer edit-event" data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier "></i>
+                  <i class="fas fa-trash-alt text-dark cursor-pointer delete-event" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer "></i>
+                </div>
+              </div>
+            </div>
+            <!-- End of Template -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card h-100">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <h6 class="mb-0">Montages Récents</h6>
+            </div>
+            <div class="col-6 text-end">
+              <button class="btn btn-outline-primary btn-sm mb-0" id="viewAllEventsButton">Voir Tout</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-3 pb-0">
+          <ul class="list-group" id="recentEventsList">
+            <!-- Template for a Recent Event -->
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg recent-event-item" style="display: none;">
+              <div class="d-flex flex-column">
+                <h6 class="mb-1 text-dark font-weight-bold text-sm event-date">Date de Montage</h6>
+                <span class="text-xs event-name">Nom du Montage</span>
+              </div>
+              <div class="d-flex align-items-center text-sm">
+                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4 view-event-details"><i class="fas fa-eye text-lg me-1"></i> Voir</button>
+              </div>
+            </li>
+            <!-- End of Template -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header pb-0 p-3">
+          <div class="d-flex justify-content-between">
+            <h6 class="mb-2">Statistiques des Montages</h6>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th>Montages</th>
+                <th>Date</th>
+                <th>Participants</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="eventStatistics">
+              <!-- Template for Event Statistics -->
+              <tr class="event-stat-item" style="display: none;">
+                <td class="event-name">Nom de l'Événement</td>
+                <td class="event-date">Date de l'Événement</td>
+                <td class="event-participants">Nombre de Participants</td>
+                <td>
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-link text-dark text-sm mb-0 px-2 edit-event-stat"><i class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-link text-dark text-sm mb-0 px-2 delete-event-stat"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <!-- End of Template -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript to handle dynamic functionalities -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Function to add a new event
+    document.getElementById('addEventButton').addEventListener('click', function () {
+      const eventList = document.getElementById('eventList');
+      const newEvent = document.querySelector('.event-item').cloneNode(true);
+      newEvent.style.display = 'flex';
+      newEvent.querySelector('.event-name').textContent = 'Nouvel Événement';
+      eventList.appendChild(newEvent);
+    });
+
+    // Function to edit an event
+    document.querySelectorAll('.edit-event').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const eventName = this.closest('.event-item').querySelector('.event-name');
+        const newEventName = prompt('Modifier le nom de l\'événement:', eventName.textContent);
+        if (newEventName) {
+          eventName.textContent = newEventName;
+        }
+      });
+    });
+
+    // Function to delete an event
+    document.querySelectorAll('.delete-event').forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')) {
+          this.closest('.event-item').remove();
+        }
+      });
+    });
+
+    // Function to view event details
+    document.querySelectorAll('.view-event-details').forEach(function (button) {
+      button.addEventListener('click', function () {
+        alert('Détails de l\'événement à venir.');
+      });
+    });
+
+    // Function to view all events
+    document.getElementById('viewAllEventsButton').addEventListener('click', function () {
+      alert('Tous les événements seront affichés ici.');
+    });
+
+    // Additional event handlers for recent events and statistics can be added similarly
+  });
+</script>
+
+
+  </main>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
