@@ -33,7 +33,7 @@ VDS_APP is the digital face of the Vie Des Saints evangelization group, designed
 ### Demo 1: Application Overview
 ![Demo 1](demo/demo1.gif)
 
-### Demo 2: User Registration Process
+### Demo 2: Publication generation Process
 ![Demo 2](demo/demo2.gif)
 
 ## Project Structure
