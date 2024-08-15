@@ -28,6 +28,14 @@ VDS_APP is the digital face of the Vie Des Saints evangelization group, designed
 - **Volunteer Management:** Engage users to participate in volunteer activities and community services.
 - **Admin Interface:** A back-office interface for administrators to manage all aspects of the platform.
 
+## Video Demos
+
+### Demo 1: Application Overview
+![Demo 1](demo/demo1.mp4)
+
+### Demo 2: User Registration Process
+![Demo 2](demo/demo2.mp4)
+
 ## Project Structure
 
 The project follows a modular structure to separate different functionalities and maintain clean, manageable code:
