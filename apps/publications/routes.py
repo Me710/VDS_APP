@@ -126,7 +126,7 @@ def delete_publication(id):
 def download_publication(id, service):
     publication = Publication.query.get_or_404(id)
     prompt = f"genere à ton choix soit une belle image de {publication.auteur} ou une image de {publication.title} sachant qu'il s'agit de l'image de fond de {service}"
-    output_quality = 90
+    output_quality = 100
     local_filename = "apps/static/front/assets/img/output.webp"
     
     # Use os.path.join for proper path handling
